@@ -17,6 +17,12 @@ int main(int argc, char *argv[])
     int actual_slv_num;
     int barrier_info, leave_info;
 
+    /*
+    Dlugosc wektora i liczba procesow, pomiedzy ktore jest rozdzielany, sa
+    ustalone na sztwyno. Jezeli alokacja wymaganej liczby procesow lub czesci
+    wektora zawiedzie, to program krzyczy i sie przewraca.
+    */
+
     id = pvm_joingroup(GRP_NAME);
     if (id != GRP_ROOT_ID) exit_with_msg("MSTR failed at pvm_joingroup\n");
     actual_slv_num = pvm_spawn(SLV_NAME, NULL, PvmTaskDefault, "", SLV_NUM, slv_tids);
